@@ -6,6 +6,9 @@
 
 [node name="World" type="Node"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -64.0 ]
+}
 
 [node name="Brick" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 144 )
@@ -50,5 +53,10 @@ remote_path = NodePath("../../Camera")
 position = Vector2( 48, 100 )
 current = true
 smoothing_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 0, 8, -64, 8, -64, 184, 128, 184, 152, 160, 200, 160, 200, 184, 232, 184, 288, 136, 320, 136, 320, 184, 336, 184, 336, 96, 336, 0, 368, 0, 368, 192, 120, 216, -72, 216, -80, 56, -88, 8, -48, -16, -8, -8, 8, -8, 8, 8 )
 
 [editable path="Player"]
