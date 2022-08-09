@@ -50,6 +50,7 @@ tracks/0/keys = {
 }
 
 [node name="DustEffect" instance=ExtResource( 2 )]
+show_behind_parent = true
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

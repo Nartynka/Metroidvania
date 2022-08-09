@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/PlayerGun.png" type="Texture" id=1]
+[ext_resource path="res://Player/PlayerGun.gd" type="Script" id=2]
+
+[node name="PlayerGun" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3, -2 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Missle" type="Position2D" parent="Sprite"]
+position = Vector2( 13, 2 )

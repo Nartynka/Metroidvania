@@ -58,12 +58,12 @@ func update_snap_vector():
 
 func jump_check():
 	if is_on_floor() or coyotoJumpTimer.time_left > 0: 
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("ui_up"):
 			motion.y = -JUMP_FORCE
 			snap_vector = Vector2.ZERO
 			just_jumped = true
 	else:
-		if Input.is_action_just_released("jump"):
+		if Input.is_action_just_released("ui_up"):
 			motion.y -= -JUMP_FORCE/2
 
 func apply_gravity(delta):
@@ -72,12 +72,15 @@ func apply_gravity(delta):
 		motion.y = min(motion.y, JUMP_FORCE)
 
 func update_animation(input_vector):
+	sprite.scale.x = sign(get_local_mouse_position().x)
 	if input_vector.x!=0:
-		sprite.scale.x = input_vector.x
 		animationPlayer.play("Run")
+		# Play backwards if player is going backward
+		animationPlayer.playback_speed = input_vector.x * sprite.scale.x
 	else:
 		animationPlayer.play("Idle")
 	if not is_on_floor():
+		animationPlayer.playback_speed = 1
 		animationPlayer.play("Jump")
 
 func move():
