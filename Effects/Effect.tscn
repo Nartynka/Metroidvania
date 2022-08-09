@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Effect" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
