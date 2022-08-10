@@ -19,6 +19,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var coyotoJumpTimer = $CoyoteJumpTimer
 onready var gun = $Sprite/PlayerGun
 onready var missle = $Sprite/PlayerGun/Sprite/Missle
+onready var fireBulletTimer = $FireBulletTimer
 
 func _physics_process(delta):
 	just_jumped = false
@@ -33,7 +34,7 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animation(input_vector)
 	move()
-	if Input.is_action_just_pressed("fire_bullet"):
+	if Input.is_action_pressed("fire_bullet") and fireBulletTimer.time_left == 0:
 		fire_bullet()
 
 func fire_bullet():
@@ -41,6 +42,7 @@ func fire_bullet():
 	bullet.velocity = Vector2.RIGHT.rotated(gun.rotation) * BULLET_SPEED
 	bullet.velocity.x *= sprite.scale.x
 	bullet.rotation = bullet.velocity.angle()
+	fireBulletTimer.start()
 	
 	
 func create_dust_effect():
