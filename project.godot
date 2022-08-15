@@ -87,6 +87,11 @@ fire_bullet={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="World"
+
 [physics]
 
 common/enable_pause_aware_picking=true

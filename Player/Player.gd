@@ -48,7 +48,8 @@ func fire_bullet():
 func create_dust_effect():
 	var dust_position = global_position
 	dust_position.x += rand_range(-4, 4)
-	Utils.instance_on_main(DustEffect, dust_position)
+	var dustEffect = Utils.instance_on_main(DustEffect, dust_position)
+#	dustEffect.queue_free()
 	
 func get_input_vector():
 	var input_vector = Vector2.ZERO
