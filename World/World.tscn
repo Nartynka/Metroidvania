@@ -144,24 +144,31 @@ tile_data = PoolIntArray( -1966057, 0, 4, -1966056, 0, 196609, -1966055, 0, 1966
 
 [node name="WalkingEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 264, 160 )
+collision_layer = 16
 
 [node name="WalkingEnemy2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 160 )
+collision_layer = 16
 
 [node name="WalkingEnemy3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 544, 112 )
+collision_layer = 16
 
 [node name="WalkingEnemy4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 728, 32 )
+collision_layer = 16
 
 [node name="WalkingEnemy6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 0 )
+collision_layer = 16
 
 [node name="WalkingEnemy5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 304, -80 )
+collision_layer = 16
 
 [node name="WalkingEnemy7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 129, -288 )
+collision_layer = 16
 
 [editable path="Player"]
 [editable path="MovingPlatform2"]
