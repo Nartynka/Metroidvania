@@ -56,4 +56,7 @@ collision_mask = 2
 position = Vector2( 0, -7.5 )
 shape = SubResource( 2 )
 
+[node name="EnemyStats" parent="." index="8"]
+max_health = 3
+
 [editable path="Hurtbox"]
