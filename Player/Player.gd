@@ -14,13 +14,18 @@ export(int) var BULLET_SPEED = 250
 var motion = Vector2.ZERO
 var snap_vector = Vector2.ZERO
 var just_jumped = false
+var invincible = false setget set_invincible
 
 onready var sprite = $Sprite
-onready var animationPlayer = $AnimationPlayer
+onready var spriteAnimation = $SpriteAnimation
+onready var blinkAnimation = $BlinkAnimation
 onready var coyotoJumpTimer = $CoyoteJumpTimer
 onready var gun = $Sprite/PlayerGun
 onready var missle = $Sprite/PlayerGun/Sprite/Missle
 onready var fireBulletTimer = $FireBulletTimer
+
+func set_invincible(new_value):
+	invincible = new_value
 
 func _physics_process(delta):
 	just_jumped = false
@@ -88,14 +93,14 @@ func apply_gravity(delta):
 func update_animation(input_vector):
 	sprite.scale.x = sign(get_local_mouse_position().x)
 	if input_vector.x!=0:
-		animationPlayer.play("Run")
+		spriteAnimation.play("Run")
 		# Play backwards if player is going backward
-		animationPlayer.playback_speed = input_vector.x * sprite.scale.x
+		spriteAnimation.playback_speed = input_vector.x * sprite.scale.x
 	else:
-		animationPlayer.play("Idle")
+		spriteAnimation.play("Idle")
 	if not is_on_floor():
-		animationPlayer.playback_speed = 1
-		animationPlayer.play("Jump")
+		spriteAnimation.playback_speed = 1
+		spriteAnimation.play("Jump")
 
 func move():
 	var was_on_floor = is_on_floor()
@@ -122,3 +127,8 @@ func move():
 	# if is on not moving floor and motion is very small (when sliding from slope motion is very small)
 	if is_on_floor() and get_floor_velocity().length() == 0 and abs(motion.x) < 1:
 		position.x = last_position.x
+
+
+func _on_Hurtbox_hit(damage):
+	if not invincible:
+		blinkAnimation.play("Blink")
