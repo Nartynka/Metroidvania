@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const DustEffect = preload("res://Effects/DustEffect.tscn")
 const Bullet = preload("res://Player/Bullet.tscn")
+const JumpEffect = preload("res://Effects/JumpEffect.tscn")
 
 export(int) var ACCELERATION = 512
 export(int) var MAX_SPEED = 64
@@ -107,7 +108,7 @@ func move():
 	# prevent from losing motion after landing on slopes
 	if not was_on_floor and is_on_floor():
 		motion.x = last_motion.x
-		create_dust_effect()
+		Utils.instance_on_main(JumpEffect, global_position)
 	
 	# Just left ground and was not jumping (end of clif)
 	# prevent from yeeting yourself at the end of clif
