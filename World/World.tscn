@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/World.gd" type="Script" id=3]
 [ext_resource path="res://World/MovingPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Camera.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -92,10 +93,7 @@ position = Vector2( 64, 104 )
 [node name="FollowCamer" parent="Player" index="4"]
 remote_path = NodePath("../../Camera")
 
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 64, 96 )
-current = true
-smoothing_enabled = true
+[node name="Camera" parent="." instance=ExtResource( 6 )]
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 4 )]
 position = Vector2( 520, -336 )
