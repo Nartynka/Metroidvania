@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "PlayerStats",
+"language": "GDScript",
+"path": "res://Player/PlayerStats.gd"
+} ]
+_global_script_class_icons={
+"PlayerStats": ""
+}
+
 [application]
 
 config/name="Metroidvania"
@@ -17,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Utils="*res://Utils.gd"
+ResourceLoader="*res://ResourceLoader.gd"
 
 [debug]
 

@@ -89,7 +89,7 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 64, 104 )
 
-[node name="FollowCamer" parent="Player" index="3"]
+[node name="FollowCamer" parent="Player" index="4"]
 remote_path = NodePath("../../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -171,6 +171,7 @@ position = Vector2( 129, -288 )
 collision_layer = 16
 
 [editable path="Player"]
+[editable path="Player/Hurtbox"]
 [editable path="MovingPlatform2"]
 [editable path="MovingPlatform3"]
 [editable path="MovingPlatform4"]

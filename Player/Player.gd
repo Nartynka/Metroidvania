@@ -16,6 +16,8 @@ var snap_vector = Vector2.ZERO
 var just_jumped = false
 var invincible = false setget set_invincible
 
+var PlayerStats = ResourceLoader.PlayerStats
+
 onready var sprite = $Sprite
 onready var spriteAnimation = $SpriteAnimation
 onready var blinkAnimation = $BlinkAnimation
@@ -23,6 +25,9 @@ onready var coyotoJumpTimer = $CoyoteJumpTimer
 onready var gun = $Sprite/PlayerGun
 onready var missle = $Sprite/PlayerGun/Sprite/Missle
 onready var fireBulletTimer = $FireBulletTimer
+
+func _ready():
+	PlayerStats.connect("player_death", self, "on_death")
 
 func set_invincible(new_value):
 	invincible = new_value
@@ -128,7 +133,10 @@ func move():
 	if is_on_floor() and get_floor_velocity().length() == 0 and abs(motion.x) < 1:
 		position.x = last_position.x
 
-
 func _on_Hurtbox_hit(damage):
 	if not invincible:
+		PlayerStats.health -= damage
 		blinkAnimation.play("Blink")
+
+func on_death():
+	queue_free()
