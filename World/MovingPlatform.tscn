@@ -44,7 +44,6 @@ __meta__ = {
 }
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-moving_platform_apply_velocity_on_leave = 1
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 texture = ExtResource( 1 )
