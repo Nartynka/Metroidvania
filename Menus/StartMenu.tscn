@@ -37,7 +37,7 @@ margin_top = 40.0
 margin_right = 56.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 56, 16 )
-text = "Quit"
+text = "Quitt"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
