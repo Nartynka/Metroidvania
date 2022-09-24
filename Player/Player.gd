@@ -11,10 +11,12 @@ export(int) var MAX_SLOOPE_ANGLE = 45
 export(int) var GRAVITY = 400
 export(int) var JUMP_FORCE = 200
 export(int) var BULLET_SPEED = 250
+
 var motion = Vector2.ZERO
 var snap_vector = Vector2.ZERO
 var just_jumped = false
 var invincible = false setget set_invincible
+var double_jump = false
 
 var PlayerStats = ResourceLoader.PlayerStats
 
@@ -34,6 +36,7 @@ func set_invincible(new_value):
 
 func _physics_process(delta):
 	just_jumped = false
+	
 	var input_vector = get_input_vector()
 	# Add to motion (move player)
 	apply_horizontal_force(input_vector, delta)
@@ -45,6 +48,8 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animation(input_vector)
 	move()
+
+
 	if Input.is_action_pressed("fire_bullet") and fireBulletTimer.time_left == 0:
 		fire_bullet()
 
@@ -83,12 +88,22 @@ func update_snap_vector():
 func jump_check():
 	if is_on_floor() or coyotoJumpTimer.time_left > 0: 
 		if Input.is_action_just_pressed("ui_up"):
-			motion.y = -JUMP_FORCE
-			snap_vector = Vector2.ZERO
+			jump(JUMP_FORCE)
 			just_jumped = true
+			double_jump = true
 	else:
-		if Input.is_action_just_released("ui_up"):
+		if Input.is_action_just_released("ui_up") and motion.y < -JUMP_FORCE/2:
 			motion.y -= -JUMP_FORCE/2
+#			double_jump = false
+		
+		if Input.is_action_just_pressed("ui_up") and double_jump: 
+			jump(JUMP_FORCE/2)
+			double_jump = false
+
+func jump(force):
+	Utils.instance_on_main(JumpEffect, global_position)
+	motion.y = -JUMP_FORCE
+	snap_vector = Vector2.ZERO
 
 func apply_gravity(delta):
 	if not is_on_floor():
