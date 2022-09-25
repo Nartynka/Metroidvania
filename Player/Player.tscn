@@ -200,7 +200,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Node" type="Node2D" parent="."]
-visible = false
 position = Vector2( -40, -24 )
 z_index = 100
 
