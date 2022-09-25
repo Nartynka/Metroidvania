@@ -19,6 +19,7 @@ enum {
 }
 
 var state = MOVE
+var previous_state = state
 var motion = Vector2.ZERO
 var snap_vector = Vector2.ZERO
 var just_jumped = false
@@ -31,6 +32,7 @@ onready var sprite = $Sprite
 onready var spriteAnimation = $SpriteAnimation
 onready var blinkAnimation = $BlinkAnimation
 onready var coyotoJumpTimer = $CoyoteJumpTimer
+onready var wallGrabTimer = $WallGrabTimer
 onready var gun = $Sprite/PlayerGun
 onready var missle = $Sprite/PlayerGun/Sprite/Missle
 onready var fireBulletTimer = $FireBulletTimer
@@ -43,7 +45,6 @@ func set_invincible(new_value):
 
 func _physics_process(delta):
 	just_jumped = false
-	
 	match state:
 		MOVE:
 			var input_vector = get_input_vector()
@@ -59,17 +60,15 @@ func _physics_process(delta):
 			move()
 			wall_check()
 		WALL_SLIDE:
-			var wall_direction = get_wall_direction()
-			if wall_direction != 0:
-				sprite.scale.x = wall_direction
 			spriteAnimation.play("Wall Slide")
-			wall_jump_check(wall_direction)
-			wall_slide_drop_check(delta, wall_direction)
+			var wall_direction = get_wall_direction()
+			if wall_direction:
+				sprite.scale.x = wall_direction
 			wall_slide(delta)
+			wall_jump_check()
 			move()
-			wall_deatch_check(wall_direction)
-
-
+			wall_deatch_check(delta, wall_direction)
+	previous_state = state
 	if Input.is_action_pressed("fire_bullet") and fireBulletTimer.time_left == 0:
 		fire_bullet()
 
@@ -79,8 +78,8 @@ func fire_bullet():
 	bullet.velocity.x *= sprite.scale.x
 	bullet.rotation = bullet.velocity.angle()
 	fireBulletTimer.start()
-	
-	
+
+
 func create_dust_effect():
 	var dust_position = global_position
 	dust_position.x += rand_range(-4, 4)
@@ -106,21 +105,24 @@ func update_snap_vector():
 		snap_vector = Vector2.DOWN
 
 func jump_check():
-	if is_on_floor() or coyotoJumpTimer.time_left > 0: 
+	if is_on_floor() or coyotoJumpTimer.time_left > 0 or previous_state == 1:
 		if Input.is_action_just_pressed("ui_up"):
-			jump(JUMP_FORCE)
+			$Node/Label.text = "Normal Jump"
+			jump()
 			just_jumped = true
 			double_jump = true
 	else:
 		if Input.is_action_just_released("ui_up") and motion.y < -JUMP_FORCE/2:
 			motion.y -= -JUMP_FORCE/2
-#			double_jump = false
 		
-		if Input.is_action_just_pressed("ui_up") and double_jump: 
-			jump(JUMP_FORCE/2)
+		if Input.is_action_just_pressed("ui_up") and double_jump:
+			$Node/Label.text = "Double Jump"
+			prints("in double: wall: ", is_on_wall(), previous_state)
+			jump()
 			double_jump = false
+			print("double jumped in move state")
 
-func jump(force):
+func jump():
 	Utils.instance_on_main(JumpEffect, global_position)
 	motion.y = -JUMP_FORCE
 	snap_vector = Vector2.ZERO
@@ -157,7 +159,7 @@ func move():
 	
 	# Just left ground and was not jumping (end of clif)
 	# prevent from yeeting yourself at the end of clif
-	if was_on_floor and not is_on_floor() and not just_jumped:
+	if was_on_floor and not (is_on_floor() or is_on_wall()) and not just_jumped:
 		motion.y = 0
 		position.y = last_position.y
 		coyotoJumpTimer.start()
@@ -168,14 +170,15 @@ func move():
 	if is_on_floor() and get_floor_velocity().length() == 0 and abs(motion.x) < 1:
 		position.x = last_position.x
 
+##########################
+#		WALL SLIDE	 	#
+##########################
+
 func wall_check():
-	var up = Input.is_action_pressed("ui_up")
-	if Input.is_action_pressed("ui_left") and up or Input.is_action_pressed("ui_right") and up:
-		if !Input.is_action_just_released("ui_left") or !Input.is_action_just_released("ui_right"):
-			return
-	if !is_on_floor() and is_on_wall():
-		state = WALL_SLIDE
-		double_jump = true
+	if !is_on_floor() and is_on_wall() and wallGrabTimer.time_left == 0:
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+				state = WALL_SLIDE
+				double_jump = true
 
 func get_wall_direction():
 	var is_wall_right = test_move(transform, Vector2.RIGHT)
@@ -183,27 +186,26 @@ func get_wall_direction():
 	# return 1 if wall is on the left, return -1 if wall is on right
 	return int(is_wall_left) - int(is_wall_right)
 
-func wall_jump_check(wall_direction):
+func wall_jump_check():
 	if Input.is_action_just_pressed("ui_up"):
-		motion.x = wall_direction * MAX_SPEED
-		motion.y = -JUMP_FORCE/1.25
 		state = MOVE
-
-func wall_slide_drop_check(delta, wall_direction):
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
-		if int(Input.is_action_just_pressed("ui_left")) == wall_direction or -int(Input.is_action_just_pressed("ui_right")) == wall_direction:
-			return
-		motion.x = ACCELERATION * delta * wall_direction
-		state = MOVE
+		jump_check()
+		print(just_jumped)
+		if just_jumped:
+			wallGrabTimer.start()
 
 func wall_slide(delta):
 	var max_slide_speed = SLIDE_SPEED
-#	if Input.is_action_just_pressed("ui_down"):
-#		max_slide_speed = JUMP_FORCE
+	if Input.is_action_pressed("ui_down"):
+		max_slide_speed = JUMP_FORCE
 	motion.y = max(motion.y * delta, max_slide_speed)
 
-func wall_deatch_check(wall_direction):
-	if wall_direction == 0 or is_on_floor() or Input.is_action_just_pressed("ui_down"):
+func wall_deatch_check(delta, wall_direction):
+	if int(Input.is_action_pressed("ui_left")) != wall_direction and -int(Input.is_action_pressed("ui_right")) != wall_direction:
+		# is not holding direction key
+		state = MOVE
+	if wall_direction == 0 or is_on_floor():
+		# is on floor or wall on both side
 		state = MOVE
 
 func _on_Hurtbox_hit(damage):

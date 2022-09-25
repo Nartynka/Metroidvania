@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/PlayerGun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerColisionShape.tres" type="Shape2D" id=4]
 [ext_resource path="res://Hurtboxes and Hitboxes/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=6]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -193,6 +194,21 @@ one_shot = true
 [node name="FireBulletTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="WallGrabTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Node" type="Node2D" parent="."]
+visible = false
+position = Vector2( -40, -24 )
+z_index = 100
+
+[node name="Label" type="Label" parent="Node"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 6 )
+autowrap = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
 collision_layer = 4
