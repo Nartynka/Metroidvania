@@ -13,3 +13,6 @@ func _ready():
 	if Input.get_connected_joypads():
 		controller_connected = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func find_player():
+	return get_tree().get_nodes_in_group("Player")[0]
