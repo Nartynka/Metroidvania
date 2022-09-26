@@ -117,10 +117,10 @@ func jump_check():
 		
 		if Input.is_action_just_pressed("ui_up") and double_jump:
 			$Node/Label.text = "Double Jump"
-			prints("in double: wall: ", is_on_wall(), previous_state)
+#			prints("in double: wall: ", is_on_wall(), previous_state)
 			jump()
 			double_jump = false
-			print("double jumped in move state")
+#			print("double jumped in move state")
 
 func jump():
 	Utils.instance_on_main(JumpEffect, global_position)
@@ -133,7 +133,13 @@ func apply_gravity(delta):
 		motion.y = min(motion.y, JUMP_FORCE)
 
 func update_animation(input_vector):
-	sprite.scale.x = sign(get_local_mouse_position().x)
+	if Utils.controller_connected:
+		if Input.get_joy_axis(0, JOY_AXIS_0) > 0:
+			sprite.scale.x = 1
+		else:
+			sprite.scale.x = -1
+	else:
+		sprite.scale.x = sign(get_local_mouse_position().x)
 	if input_vector.x!=0:
 		spriteAnimation.play("Run")
 		# Play backwards if player is going backward
@@ -177,8 +183,13 @@ func move():
 func wall_check():
 	if !is_on_floor() and is_on_wall() and wallGrabTimer.time_left == 0:
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-				state = WALL_SLIDE
-				double_jump = true
+				var timer = get_tree().create_timer(0.05)
+				timer.connect("timeout", self, "wall_grab")
+
+func wall_grab():
+	if is_on_wall():
+		state = WALL_SLIDE
+		double_jump = true
 
 func get_wall_direction():
 	var is_wall_right = test_move(transform, Vector2.RIGHT)
@@ -190,7 +201,7 @@ func wall_jump_check():
 	if Input.is_action_just_pressed("ui_up"):
 		state = MOVE
 		jump_check()
-		print(just_jumped)
+#		print(just_jumped)
 		if just_jumped:
 			wallGrabTimer.start()
 
