@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
-const DustEffect = preload("res://Effects/DustEffect.tscn")
 const Bullet = preload("res://Player/Bullet.tscn")
+const DustEffect = preload("res://Effects/DustEffect.tscn")
 const JumpEffect = preload("res://Effects/JumpEffect.tscn")
+const WallDustEffect = preload("res://Effects/WallDustEffect.tscn")
 
 export(int) var ACCELERATION = 512
 export(int) var MAX_SPEED = 64
@@ -65,7 +66,7 @@ func _physics_process(delta):
 			if wall_direction:
 				sprite.scale.x = wall_direction
 			wall_slide(delta)
-			wall_jump_check()
+			wall_jump_check(wall_direction)
 			move()
 			wall_deatch_check(delta, wall_direction)
 	previous_state = state
@@ -187,9 +188,10 @@ func wall_check():
 				timer.connect("timeout", self, "wall_grab")
 
 func wall_grab():
-	if is_on_wall():
+	if is_on_wall() and not is_on_floor():
 		state = WALL_SLIDE
 		double_jump = true
+		create_dust_effect()
 
 func get_wall_direction():
 	var is_wall_right = test_move(transform, Vector2.RIGHT)
@@ -197,13 +199,16 @@ func get_wall_direction():
 	# return 1 if wall is on the left, return -1 if wall is on right
 	return int(is_wall_left) - int(is_wall_right)
 
-func wall_jump_check():
+func wall_jump_check(wall_direction):
 	if Input.is_action_just_pressed("ui_up"):
-		state = MOVE
+		motion.x = wall_direction * MAX_SPEED
 		jump_check()
-#		print(just_jumped)
 		if just_jumped:
 			wallGrabTimer.start()
+		state = MOVE
+		var dust_position = global_position + Vector2(wall_direction*4, -2)
+		var dust = Utils.instance_on_main(WallDustEffect, dust_position)
+		dust.scale.x = wall_direction
 
 func wall_slide(delta):
 	var max_slide_speed = SLIDE_SPEED
