@@ -135,10 +135,12 @@ func apply_gravity(delta):
 
 func update_animation(input_vector):
 	if Utils.controller_connected:
-		if Input.get_joy_axis(0, JOY_AXIS_0) > 0:
-			sprite.scale.x = 1
-		else:
-			sprite.scale.x = -1
+		var input = Input.get_joy_axis(0, JOY_AXIS_0)
+		if abs(input) > 0.3:
+			if input > 0:
+				sprite.scale.x = 1
+			else:
+				sprite.scale.x = -1
 	else:
 		sprite.scale.x = sign(get_local_mouse_position().x)
 	if input_vector.x!=0:
