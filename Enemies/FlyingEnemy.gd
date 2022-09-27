@@ -4,16 +4,14 @@ export(int) var ACCELERATION = 400
 onready var sprite = $Sprite
 var player = null
 
-func _ready():
-	player = Utils.find_player()
-	
 func _physics_process(delta):
+	player = Utils.find_player()
 	if player != null:
 		chase_player(delta)
 
 func chase_player(delta):
 	var direction = (player.global_position - global_position)
-	if direction.x > 400 || direction.y > 400 :
+	if abs(direction.x) > 300 || abs(direction.y) > 300:
 		return
 	motion += direction * ACCELERATION * delta
 	motion = motion.clamped(MAX_SPEED)

@@ -130,15 +130,18 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 64, 104 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="FollowCamer" parent="Player" index="4"]
 remote_path = NodePath("../../Camera")
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 64, 96 )
-
-[node name="WalkingEnemy8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1000, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TileMap" parent="." instance=ExtResource( 6 )]
 cell_custom_transform = Transform2D( 0, 0, 0, 64, 0, 0 )
@@ -195,6 +198,9 @@ anims/RESET = SubResource( 5 )
 [node name="Path2D" parent="MovingPlatform6" index="2"]
 curve = SubResource( 6 )
 
+[node name="WalkingEnemy8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1000, 32 )
+
 [node name="WalkingEnemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 264, 160 )
 collision_layer = 16
@@ -207,16 +213,112 @@ collision_layer = 16
 position = Vector2( 544, 112 )
 collision_layer = 16
 
+[node name="WalkingEnemy33" parent="." instance=ExtResource( 7 )]
+position = Vector2( 432, 160 )
+collision_layer = 16
+
+[node name="WalkingEnemy34" parent="." instance=ExtResource( 7 )]
+position = Vector2( 424, 64 )
+collision_layer = 16
+
 [node name="WalkingEnemy4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 728, 32 )
+collision_layer = 16
+
+[node name="WalkingEnemy32" parent="." instance=ExtResource( 7 )]
+position = Vector2( 688, -48 )
+collision_layer = 16
+
+[node name="WalkingEnemy11" parent="." instance=ExtResource( 7 )]
+position = Vector2( 872, 32 )
+collision_layer = 16
+
+[node name="WalkingEnemy12" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1248, -208 )
+collision_layer = 16
+
+[node name="WalkingEnemy13" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1008, -352 )
+collision_layer = 16
+
+[node name="WalkingEnemy14" parent="." instance=ExtResource( 7 )]
+position = Vector2( 704, -480 )
+collision_layer = 16
+
+[node name="WalkingEnemy15" parent="." instance=ExtResource( 7 )]
+position = Vector2( 680, -160 )
 collision_layer = 16
 
 [node name="WalkingEnemy6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 96, 0 )
 collision_layer = 16
 
+[node name="WalkingEnemy17" parent="." instance=ExtResource( 7 )]
+position = Vector2( 264, 80 )
+collision_layer = 16
+
+[node name="WalkingEnemy18" parent="." instance=ExtResource( 7 )]
+position = Vector2( 168, 128 )
+collision_layer = 16
+
+[node name="WalkingEnemy19" parent="." instance=ExtResource( 7 )]
+position = Vector2( -104, 144 )
+collision_layer = 16
+
+[node name="WalkingEnemy20" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -160 )
+collision_layer = 16
+
+[node name="WalkingEnemy21" parent="." instance=ExtResource( 7 )]
+position = Vector2( 488, -480 )
+collision_layer = 16
+
+[node name="WalkingEnemy22" parent="." instance=ExtResource( 7 )]
+position = Vector2( 784, -608 )
+collision_layer = 16
+
+[node name="WalkingEnemy23" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1432, -240 )
+collision_layer = 16
+
+[node name="WalkingEnemy24" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1528, -160 )
+collision_layer = 16
+
+[node name="WalkingEnemy25" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1736, -64 )
+collision_layer = 16
+
+[node name="WalkingEnemy29" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1704, 0 )
+collision_layer = 16
+
+[node name="WalkingEnemy26" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1440, 0 )
+collision_layer = 16
+
+[node name="WalkingEnemy27" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1272, 16 )
+collision_layer = 16
+
+[node name="WalkingEnemy28" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1176, -160 )
+collision_layer = 16
+
 [node name="WalkingEnemy5" parent="." instance=ExtResource( 7 )]
 position = Vector2( 304, -80 )
+collision_layer = 16
+
+[node name="WalkingEnemy30" parent="." instance=ExtResource( 7 )]
+position = Vector2( 496, -192 )
+collision_layer = 16
+
+[node name="WalkingEnemy31" parent="." instance=ExtResource( 7 )]
+position = Vector2( 432, -352 )
+collision_layer = 16
+
+[node name="WalkingEnemy16" parent="." instance=ExtResource( 7 )]
+position = Vector2( 184, -80 )
 collision_layer = 16
 
 [node name="WalkingEnemy7" parent="." instance=ExtResource( 7 )]
@@ -233,6 +335,33 @@ collision_layer = 16
 
 [node name="FlyingEnemy" parent="." instance=ExtResource( 8 )]
 position = Vector2( -32, 24 )
+
+[node name="FlyingEnemy5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 560, -40 )
+
+[node name="FlyingEnemy6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 424, -416 )
+
+[node name="FlyingEnemy7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 32, -360 )
+
+[node name="FlyingEnemy8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 752, -536 )
+
+[node name="FlyingEnemy9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 880, -272 )
+
+[node name="FlyingEnemy10" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1224, -240 )
+
+[node name="FlyingEnemy11" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1464, -32 )
+
+[node name="FlyingEnemy12" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1704, -120 )
+
+[node name="FlyingEnemy13" parent="." instance=ExtResource( 8 )]
+position = Vector2( 824, -40 )
 
 [node name="FlyingEnemy2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1304, -32 )
