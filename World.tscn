@@ -488,8 +488,96 @@ rotation = 3.14159
 position = Vector2( 712, -384 )
 rotation = 3.14159
 
-[node name="CrawlingEnemy" parent="." instance=ExtResource( 10 )]
+[node name="CrawlingEnemies" type="Node" parent="."]
+
+[node name="CrawlingEnemy" parent="CrawlingEnemies" instance=ExtResource( 10 )]
 position = Vector2( 136, 128 )
+
+[node name="CrawlingEnemy21" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 160, -16 )
+
+[node name="CrawlingEnemy22" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 56, 16 )
+direction = -1
+
+[node name="CrawlingEnemy23" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 64, -80 )
+direction = -1
+
+[node name="CrawlingEnemy6" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 344, -160 )
+
+[node name="CrawlingEnemy7" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 184, -448 )
+
+[node name="CrawlingEnemy8" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 568, -400 )
+
+[node name="CrawlingEnemy9" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 656, -304 )
+
+[node name="CrawlingEnemy27" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 664, -360 )
+rotation = 0.785398
+
+[node name="CrawlingEnemy10" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 624, -96 )
+
+[node name="CrawlingEnemy11" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 880, -144 )
+
+[node name="CrawlingEnemy12" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1048, -224 )
+
+[node name="CrawlingEnemy26" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 728, -400 )
+
+[node name="CrawlingEnemy13" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1064, -128 )
+
+[node name="CrawlingEnemy14" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1336, -256 )
+
+[node name="CrawlingEnemy15" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1240, -80 )
+
+[node name="CrawlingEnemy16" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1144, 0 )
+
+[node name="CrawlingEnemy17" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1368, 0 )
+
+[node name="CrawlingEnemy18" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1488, -160 )
+
+[node name="CrawlingEnemy19" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 424, -16 )
+
+[node name="CrawlingEnemy24" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 688, 120 )
+rotation = -0.392699
+
+[node name="CrawlingEnemy25" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 680, 64 )
+
+[node name="CrawlingEnemy20" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( 544, 8 )
+rotation = 0.392699
+
+[node name="CrawlingEnemy2" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( -224, 144 )
+
+[node name="CrawlingEnemy3" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( -216, -32 )
+direction = -1
+
+[node name="CrawlingEnemy4" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( -160, 48 )
+rotation = 1.5708
+
+[node name="CrawlingEnemy5" parent="CrawlingEnemies" instance=ExtResource( 10 )]
+position = Vector2( -144, -136 )
+rotation = -1.5708
 
 [editable path="Player"]
 [editable path="Player/Hurtbox"]
