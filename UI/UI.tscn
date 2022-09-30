@@ -12,11 +12,11 @@ margin_top = 4.0
 margin_right = 26.0
 margin_bottom = 16.0
 
-[node name="PauseMenu" parent="." instance=ExtResource( 2 )]
-visible = false
-
 [node name="MissilesCount" parent="." instance=ExtResource( 3 )]
 margin_left = 5.0
 margin_top = 20.0
 margin_right = 30.0
 margin_bottom = 30.0
+
+[node name="PauseMenu" parent="." instance=ExtResource( 2 )]
+visible = false
