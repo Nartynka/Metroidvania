@@ -74,7 +74,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("fire_bullet") and fireBulletTimer.time_left == 0:
 		fire_bullet()
 	if Input.is_action_pressed("fire_missile") and fireBulletTimer.time_left == 0:
-		fire_missile()
+		if PlayerStats.missiles > 0:
+			fire_missile()
+			PlayerStats.missiles -= 1
 
 func fire_bullet():
 	var bullet = Utils.instance_on_main(Bullet, firePoint.global_position)
