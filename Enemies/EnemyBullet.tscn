@@ -49,6 +49,9 @@ autoplay = "Animate"
 anims/Animate = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
+[node name="Hitbox" parent="." index="3"]
+collision_mask = 6
+
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 3 )
 

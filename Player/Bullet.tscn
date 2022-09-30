@@ -66,7 +66,7 @@ anims/Fire = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="Hitbox" parent="." index="3"]
-collision_mask = 26
+collision_mask = 10
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 3 )
