@@ -11,6 +11,5 @@ position = Vector2( -3, -2 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Missle" type="Position2D" parent="Sprite"]
-unique_name_in_owner = true
+[node name="FirePoint" type="Position2D" parent="Sprite"]
 position = Vector2( 13, 2 )

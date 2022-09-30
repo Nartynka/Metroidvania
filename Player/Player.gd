@@ -35,7 +35,7 @@ onready var blinkAnimation = $BlinkAnimation
 onready var coyotoJumpTimer = $CoyoteJumpTimer
 onready var wallGrabTimer = $WallGrabTimer
 onready var gun = $Sprite/PlayerGun
-onready var missle = $Sprite/PlayerGun/Sprite/Missle
+onready var firePoint = $Sprite/PlayerGun/Sprite/Spawnpoint
 onready var fireBulletTimer = $FireBulletTimer
 
 func _ready():
@@ -74,7 +74,7 @@ func _physics_process(delta):
 		fire_bullet()
 
 func fire_bullet():
-	var bullet = Utils.instance_on_main(Bullet, missle.global_position)
+	var bullet = Utils.instance_on_main(Bullet, firePoint.global_position)
 	bullet.velocity = Vector2.RIGHT.rotated(gun.rotation) * BULLET_SPEED
 	bullet.velocity.x *= sprite.scale.x
 	bullet.rotation = bullet.velocity.angle()
