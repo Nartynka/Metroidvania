@@ -118,6 +118,18 @@ fire_bullet={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+fire_missile={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 rstick_up={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
@@ -136,16 +148,6 @@ rstick_left={
 rstick_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":1.0,"script":null)
- ]
-}
-fullscreen={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-fire_missile={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
