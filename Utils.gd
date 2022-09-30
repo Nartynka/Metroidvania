@@ -18,3 +18,7 @@ func find_player():
 	var player = get_tree().get_nodes_in_group("Player")
 	if player:
 		return player[0]
+
+func _input(event):
+	if Input.is_action_just_pressed("fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
