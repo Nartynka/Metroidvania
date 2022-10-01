@@ -36,6 +36,7 @@ margin_bottom = 13.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 17.0
 margin_right = 64.0
 margin_bottom = 33.0

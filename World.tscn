@@ -132,7 +132,7 @@ __meta__ = {
 [node name="UI" parent="." instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 144, -160 )
+position = Vector2( 64, 112 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -141,7 +141,7 @@ __meta__ = {
 remote_path = NodePath("../../Camera")
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 144, -168 )
+position = Vector2( 64, 104 )
 __meta__ = {
 "_edit_lock_": true
 }

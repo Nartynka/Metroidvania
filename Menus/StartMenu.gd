@@ -1,9 +1,14 @@
 extends Control
 
 
+onready var buttons = [$"%StartButton", $"%LoadButton", $"%QuitButton"]
+#var focus = -1
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
-
+	buttons[0].grab_focus()
+	if Utils.controller_connected:
+		for i in buttons:
+			i.mouse_filter = MOUSE_FILTER_IGNORE
 
 func _on_StartButton_pressed():
 	get_tree().change_scene("res://World.tscn")

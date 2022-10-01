@@ -33,6 +33,7 @@ margin_bottom = 13.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 17.0
 margin_right = 56.0
 margin_bottom = 33.0
@@ -40,6 +41,7 @@ rect_min_size = Vector2( 56, 16 )
 text = "New Game"
 
 [node name="LoadButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 37.0
 margin_right = 56.0
 margin_bottom = 53.0
@@ -47,6 +49,7 @@ rect_min_size = Vector2( 56, 16 )
 text = "Load Game"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 57.0
 margin_right = 56.0
 margin_bottom = 73.0

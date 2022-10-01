@@ -119,16 +119,16 @@ func update_snap_vector():
 
 func jump_check():
 	if is_on_floor() or coyotoJumpTimer.time_left > 0 or previous_state == 1:
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_just_pressed("jump"):
 			$Node/Label.text = "Normal Jump"
 			jump()
 			just_jumped = true
 			double_jump = true
 	else:
-		if Input.is_action_just_released("ui_up") and motion.y < -JUMP_FORCE/2:
+		if Input.is_action_just_released("jump") and motion.y < -JUMP_FORCE/2:
 			motion.y -= -JUMP_FORCE/2
 		
-		if Input.is_action_just_pressed("ui_up") and double_jump:
+		if Input.is_action_just_pressed("jump") and double_jump:
 			$Node/Label.text = "Double Jump"
 #			prints("in double: wall: ", is_on_wall(), previous_state)
 			jump()
@@ -147,9 +147,9 @@ func apply_gravity(delta):
 
 func update_animation(input_vector):
 	if Utils.controller_connected:
-		var input = Input.get_joy_axis(0, JOY_AXIS_0)
-		if abs(input) > 0.3:
-			if input > 0:
+		var ls_input = Input.get_joy_axis(0, JOY_AXIS_0)
+		if abs(ls_input) > 0.3 and !gun.opposite:
+			if ls_input > 0:
 				sprite.scale.x = 1
 			else:
 				sprite.scale.x = -1
@@ -214,7 +214,7 @@ func get_wall_direction():
 	return int(is_wall_left) - int(is_wall_right)
 
 func wall_jump_check(wall_direction):
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("jump"):
 		motion.x = wall_direction * MAX_SPEED
 		jump_check()
 		if just_jumped:
@@ -242,6 +242,10 @@ func _on_Hurtbox_hit(damage):
 	if not invincible:
 		PlayerStats.health -= damage
 		blinkAnimation.play("Blink")
+		if PlayerStats.health > 0:
+			Input.start_joy_vibration(0, 0.6, 0.6, 0.3)
+		else:
+			Input.start_joy_vibration(0, 1, 1, 0.7)
 
 func on_death():
 	queue_free()
