@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "PlayerStats",
 "language": "GDScript",
 "path": "res://Player/PlayerStats.gd"
+}, {
+"base": "Area2D",
+"class": "Powerup",
+"language": "GDScript",
+"path": "res://Player/Powerup.gd"
 } ]
 _global_script_class_icons={
-"PlayerStats": ""
+"PlayerStats": "",
+"Powerup": ""
 }
 
 [application]
@@ -163,6 +169,7 @@ rstick_right={
 2d_physics/layer_3="PlayerHurtbox"
 2d_physics/layer_4="EnemyHurtbox"
 2d_physics/layer_5="Brcik"
+2d_physics/layer_6="Powerup"
 
 [physics]
 

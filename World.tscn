@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Enemies/PlantEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/CrawlingEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Brick.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Player/MissilesPowerup.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Loop"
@@ -623,6 +624,9 @@ rotation = 1.5708
 [node name="CrawlingEnemy5" parent="CrawlingEnemies" instance=ExtResource( 10 )]
 position = Vector2( -144, -136 )
 rotation = -1.5708
+
+[node name="MissilesPowerup" parent="." instance=ExtResource( 12 )]
+position = Vector2( 144, -24 )
 
 [editable path="Player"]
 [editable path="Player/Hurtbox"]

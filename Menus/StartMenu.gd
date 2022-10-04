@@ -6,6 +6,7 @@ onready var buttons = [$"%StartButton", $"%LoadButton", $"%QuitButton"]
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 	buttons[0].grab_focus()
+
 func _input(event):
 	if Utils.controller_connected:
 		for i in buttons:

@@ -38,7 +38,7 @@ onready var wallGrabTimer = $WallGrabTimer
 onready var gun = $Sprite/PlayerGun
 onready var firePoint = $Sprite/PlayerGun/Sprite/FirePoint
 onready var fireBulletTimer = $FireBulletTimer
-
+onready var pickupCheck = $PickupCheck
 func _ready():
 	PlayerStats.connect("player_death", self, "on_death")
 
@@ -74,9 +74,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("fire_bullet") and fireBulletTimer.time_left == 0:
 		fire_bullet()
 	if Input.is_action_pressed("fire_missile") and fireBulletTimer.time_left == 0:
-		if PlayerStats.missiles > 0:
+		if PlayerStats.missiles > 0 and PlayerStats.missiles_unlocked:
 			fire_missile()
 			PlayerStats.missiles -= 1
+	if  Input.is_action_pressed("ui_down") and !PlayerStats.missiles_unlocked:
+		 PlayerStats.missiles_unlocked = true
 
 func fire_bullet():
 	var bullet = Utils.instance_on_main(Bullet, firePoint.global_position)
@@ -249,3 +251,8 @@ func _on_Hurtbox_hit(damage):
 
 func on_death():
 	queue_free()
+
+
+func _on_PickupCheck_area_entered(area):
+	if area is Powerup:
+		area._pick_up()
