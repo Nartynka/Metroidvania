@@ -13,7 +13,7 @@ func _input(event):
 			i.mouse_filter = MOUSE_FILTER_IGNORE
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://World.tscn")
+	get_tree().change_scene("res://World/World.tscn")
 
 
 func _on_LoadButton_pressed():

@@ -30,6 +30,8 @@ var double_jump = false
 
 var PlayerStats = ResourceLoader.PlayerStats
 
+signal door_entered(door)
+
 onready var sprite = $Sprite
 onready var spriteAnimation = $SpriteAnimation
 onready var blinkAnimation = $BlinkAnimation

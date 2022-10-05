@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/World.gd" type="Script" id=1]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level_00.tscn" type="PackedScene" id=5]
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -64.0 ]
+}
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 24, 152 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FollowCamer" parent="Player" index="4"]
+remote_path = NodePath("../../Camera")
+
+[node name="Camera" parent="." instance=ExtResource( 4 )]
+position = Vector2( 24, 144 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Level_00" parent="." instance=ExtResource( 5 )]
+
+[editable path="Player"]
+[editable path="Player/Hurtbox"]
