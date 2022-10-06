@@ -5,7 +5,7 @@ onready var sprite = $Sprite
 var player = null
 
 func _physics_process(delta):
-	player = Utils.find_player()
+	player = Utils.get_player()
 	if player != null:
 		chase_player(delta)
 

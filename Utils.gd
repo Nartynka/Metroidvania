@@ -9,7 +9,7 @@ func instance_on_main(Scene, position):
 	instance.global_position = position
 	return instance
 
-func find_player():
+func get_player():
 	var player = get_tree().get_nodes_in_group("Player")
 	if player:
 		return player[0]
