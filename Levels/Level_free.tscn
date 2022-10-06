@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/MovingPlatform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/CrawlingEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/PlantEnemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/MissilesPowerup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/FlyingEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Brick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Door.tscn" type="PackedScene" id=9]
@@ -681,9 +680,6 @@ rotation = 1.5708
 [node name="CrawlingEnemy5" parent="CrawlingEnemies" index="26" instance=ExtResource( 4 )]
 position = Vector2( 256, -216 )
 rotation = -1.5708
-
-[node name="MissilesPowerup" parent="." index="8" instance=ExtResource( 6 )]
-position = Vector2( 584, 584 )
 
 [editable path="MovingPlatforms/MovingPlatform7"]
 [editable path="MovingPlatforms/MovingPlatform2"]
