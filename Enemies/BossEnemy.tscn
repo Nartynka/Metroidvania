@@ -7,7 +7,7 @@
 [ext_resource path="res://Enemies/BossEnemyHead.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/BossEnemyLeg2.png" type="Texture" id=6]
 [ext_resource path="res://Enemies/BossEnemyLeg3.png" type="Texture" id=7]
-[ext_resource path="res://Enemies/BossEnemy.png" type="Texture" id=8]
+[ext_resource path="res://Enemies/BossEnemy.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fly"
@@ -142,7 +142,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 8.06533, -28.7419 ]
+"values": [ 8.06533, 15.0 ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("Sprite/RightLowerLeg/MiddleSegment:rotation_degrees")
@@ -154,7 +154,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -2.61827, 53.2957 ]
+"values": [ -2.61827, 20.2403 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("Sprite/RightLowerLeg:rotation_degrees")
@@ -166,7 +166,7 @@ tracks/12/keys = {
 "times": PoolRealArray( 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 34.5529, 15.4462 ]
+"values": [ 34.5529, 11.6943 ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment/EndSegment:rotation_degrees")
@@ -178,7 +178,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -2.95309, 28.7418 ]
+"values": [ -2.95309, -15.0 ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment:rotation_degrees")
@@ -190,7 +190,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -2.22921, -53.2956 ]
+"values": [ -2.22921, -27.4243 ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("Sprite/LeftLowerLeg:rotation_degrees")
@@ -202,7 +202,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -34.8177, -15.4462 ]
+"values": [ -34.8177, -9.6226 ]
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment/EndSegment:position")
@@ -241,7 +241,7 @@ tracks/18/keys = {
 "values": [ Vector2( -11, -2 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("Sprite/RightLowerLeg/MiddleSegment/EndSegment:position")
+tracks/19/path = NodePath("Sprite/RightLowerLeg:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -250,10 +250,10 @@ tracks/19/keys = {
 "times": PoolRealArray( 0.7 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 6, 10 ) ]
+"values": [ Vector2( 11, -2 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("Sprite/RightLowerLeg/MiddleSegment:position")
+tracks/20/path = NodePath("Sprite/RightLowerLeg/MiddleSegment/EndSegment:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -262,10 +262,10 @@ tracks/20/keys = {
 "times": PoolRealArray( 0.7 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 12, 3 ) ]
+"values": [ Vector2( 6, 10 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("Sprite/RightLowerLeg:position")
+tracks/21/path = NodePath("Sprite/RightLowerLeg/MiddleSegment:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -274,7 +274,7 @@ tracks/21/keys = {
 "times": PoolRealArray( 0.7 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 11, -2 ) ]
+"values": [ Vector2( 12, 3 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -671,16 +671,10 @@ radius = 16.0
 length = 16.0
 
 [node name="BossEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+ACCELERATION = 70
 
-[node name="ColorRect" type="ColorRect" parent="." index="0"]
-visible = false
-margin_left = -88.0
-margin_top = -57.0
-margin_right = 87.0
-margin_bottom = 47.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -2 )
 texture = ExtResource( 3 )
 
@@ -775,7 +769,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftLowerLeg" index="0"]
 position = Vector2( -12, 3 )
-rotation = -0.330908
+rotation = -0.330907
 texture = ExtResource( 6 )
 offset = Vector2( -2, 4 )
 __meta__ = {
@@ -831,32 +825,44 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="BossEnemy" type="Sprite" parent="." index="2"]
-visible = false
-modulate = Color( 1, 1, 1, 0.301961 )
-position = Vector2( -1, -14 )
-texture = ExtResource( 8 )
-
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Fly"
 anims/Fly = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
-[node name="Hurtbox" parent="." index="5"]
+[node name="Hurtbox" parent="." index="3"]
 visible = false
 
 [node name="Collision" parent="Hurtbox" index="0"]
 position = Vector2( 0, -7 )
 shape = SubResource( 3 )
 
-[node name="EnemyStats" parent="." index="6"]
+[node name="EnemyStats" parent="." index="4"]
 max_health = 100
 
-[node name="Hitbox" parent="." index="7"]
+[node name="Hitbox" parent="." index="5"]
 visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 4 )
+
+[node name="LeftWallCheck" type="RayCast2D" parent="." index="6"]
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 2
+
+[node name="RightWallCheck" type="RayCast2D" parent="." index="7"]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 2
+
+[node name="FireTimer" type="Timer" parent="." index="8"]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
