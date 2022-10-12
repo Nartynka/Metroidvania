@@ -825,6 +825,9 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="Collision" parent="." index="1"]
+visible = false
+
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Fly"
 anims/Fly = SubResource( 1 )
@@ -839,9 +842,6 @@ shape = SubResource( 3 )
 
 [node name="EnemyStats" parent="." index="4"]
 max_health = 100
-
-[node name="Hitbox" parent="." index="5"]
-visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 4 )
@@ -859,7 +859,7 @@ cast_to = Vector2( 0, 16 )
 collision_mask = 2
 
 [node name="FireTimer" type="Timer" parent="." index="8"]
-wait_time = 0.3
+wait_time = 0.4
 autostart = true
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
