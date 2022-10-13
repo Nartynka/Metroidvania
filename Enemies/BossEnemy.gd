@@ -21,7 +21,7 @@ func chase_player(delta):
 		motion.x += ACCELERATION * delta * direction
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		global_position.x += motion.x * delta
-		rotation_degrees = lerp(rotation_degrees, (motion.x / MAX_SPEED), 0.3)
+		rotation_degrees = lerp(rotation_degrees, (motion.x / MAX_SPEED) * 5, 0.3)
 		
 		if (rightWallCheck.is_colliding() or leftWallCheck.is_colliding()) and motion.x != 0:
 			motion.x *= -0.5
