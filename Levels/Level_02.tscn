@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Connections/01_and_02.tres" type="Resource" id=3]
+[ext_resource path="res://Enemies/BossEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Connections/02_and_free.tres" type="Resource" id=6]
+[ext_resource path="res://World/Trigger.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Level_02.gd" type="Script" id=8]
+[ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 17 )
+
+[node name="Level_02" instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+
+[node name="Door2" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 256, 144 )
+connection = ExtResource( 6 )
+new_level_path = "res://Levels/Level_free.tscn"
+
+[node name="Door" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( -32, 144 )
+scale = Vector2( -1, 1 )
+connection = ExtResource( 3 )
+new_level_path = "res://Levels/Level_01.tscn"
+
+[node name="TileMap" parent="." index="2"]
+tile_data = PoolIntArray( -65533, 0, 0, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 2, 2, 0, 0, 3, 0, 131078, 4, 0, 65537, 5, 0, 65537, 6, 0, 65537, 7, 0, 65537, 8, 0, 65537, 9, 0, 131077, 10, 0, 1, 11, 0, 2, 65537, 0, 0, 65538, 0, 131078, 65539, 0, 65541, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 131073, 65543, 0, 65542, 65544, 0, 65541, 65545, 0, 131073, 65546, 0, 131073, 65547, 0, 9, 65548, 0, 2, 131072, 0, 0, 131073, 0, 131078, 131074, 0, 65541, 131075, 0, 131074, 131079, 0, 131072, 131080, 0, 131074, 131083, 0, 131072, 131084, 0, 196613, 131085, 0, 6, 131086, 0, 2, 262142, 0, 0, 262143, 0, 1, 196608, 0, 65545, 196609, 0, 131073, 196610, 0, 131074, 196621, 0, 131072, 196622, 0, 9, 196623, 0, 1, 196624, 0, 2, 327678, 0, 65536, 327679, 0, 65541, 262144, 0, 131074, 262158, 0, 131072, 262159, 0, 131073, 262160, 0, 65543, 393213, 0, 0, 393214, 0, 65545, 393215, 0, 131074, 327696, 0, 65539, 458749, 0, 65536, 458750, 0, 65538, 393232, 0, 65539, 524285, 0, 131072, 524286, 0, 131074, 458768, 0, 131075, 720893, 0, 0, 720894, 0, 1, 720895, 0, 2, 655362, 0, 0, 655363, 0, 1, 655364, 0, 2, 655366, 0, 0, 655367, 0, 2, 655373, 0, 0, 655374, 0, 1, 655375, 0, 1, 655376, 0, 2, 786429, 0, 131072, 786430, 0, 65542, 786431, 0, 131077, 720896, 0, 1, 720897, 0, 1, 720898, 0, 131078, 720899, 0, 65537, 720900, 0, 131077, 720901, 0, 1, 720902, 0, 131078, 720903, 0, 131077, 720904, 0, 1, 720905, 0, 1, 720906, 0, 1, 720907, 0, 1, 720908, 0, 1, 720909, 0, 131078, 720910, 0, 65537, 720911, 0, 65537, 720912, 0, 65538, 851966, 0, 131072, 851967, 0, 131073, 786432, 0, 131073, 786433, 0, 131073, 786434, 0, 131073, 786435, 0, 131073, 786436, 0, 131073, 786437, 0, 131073, 786438, 0, 131073, 786439, 0, 131073, 786440, 0, 131073, 786441, 0, 131073, 786442, 0, 131073, 786443, 0, 131073, 786444, 0, 131073, 786445, 0, 131073, 786446, 0, 131073, 786447, 0, 131073, 786448, 0, 131074 )
+
+[node name="Spikes" type="Node2D" parent="." index="3"]
+position = Vector2( 16, -16 )
+
+[node name="Spikes1" parent="Spikes" index="0" instance=ExtResource( 5 )]
+position = Vector2( -16, 112 )
+rotation = 1.5708
+
+[node name="Spikes2" parent="Spikes" index="1" instance=ExtResource( 5 )]
+position = Vector2( 0, 96 )
+rotation = 1.5708
+
+[node name="Spikes3" parent="Spikes" index="2" instance=ExtResource( 5 )]
+position = Vector2( 16, 80 )
+rotation = 1.5708
+
+[node name="Spikes4" parent="Spikes" index="3" instance=ExtResource( 5 )]
+position = Vector2( 48, 64 )
+rotation = 1.5708
+
+[node name="Spikes5" parent="Spikes" index="4" instance=ExtResource( 5 )]
+position = Vector2( 176, 80 )
+rotation = -1.5708
+
+[node name="Spikes7" parent="Spikes" index="5" instance=ExtResource( 5 )]
+position = Vector2( 192, 96 )
+rotation = -1.5708
+
+[node name="Spikes12" parent="Spikes" index="6" instance=ExtResource( 5 )]
+position = Vector2( 224, 112 )
+rotation = -1.5708
+
+[node name="Spikes13" parent="Spikes" index="7" instance=ExtResource( 5 )]
+position = Vector2( 224, 128 )
+rotation = -1.5708
+
+[node name="Spikes8" parent="Spikes" index="8" instance=ExtResource( 5 )]
+position = Vector2( 80, 64 )
+rotation = -3.14159
+
+[node name="Spikes11" parent="Spikes" index="9" instance=ExtResource( 5 )]
+position = Vector2( 64, 64 )
+rotation = -3.14159
+
+[node name="Spikes9" parent="Spikes" index="10" instance=ExtResource( 5 )]
+position = Vector2( 96, 64 )
+rotation = -3.14159
+
+[node name="Spikes10" parent="Spikes" index="11" instance=ExtResource( 5 )]
+position = Vector2( 144, 64 )
+rotation = -3.14159
+
+[node name="BossEnemy" parent="." index="4" instance=ExtResource( 4 )]
+position = Vector2( 144, 120 )
+
+[node name="Trigger" parent="." index="5" instance=ExtResource( 7 )]
+position = Vector2( 0, 144 )
+
+[node name="CollisionShape2D" parent="Trigger" index="0"]
+shape = SubResource( 1 )
+
+[node name="EnterDoorBlock" parent="." index="6" instance=ExtResource( 9 )]
+visible = false
+collision_layer = 0
+tile_data = PoolIntArray( 589821, 0, 3, 655357, 0, 131075 )
+
+[node name="ExitDoorBlock" parent="." index="7" instance=ExtResource( 9 )]
+visible = false
+collision_layer = 0
+tile_data = PoolIntArray( 524304, 0, 3, 589840, 0, 131075 )
+
+[connection signal="boss_died" from="BossEnemy" to="." method="_on_BossEnemy_boss_died"]
+[connection signal="area_triggered" from="Trigger" to="." method="_on_Trigger_area_triggered"]
+
+[editable path="Trigger"]

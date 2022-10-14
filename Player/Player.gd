@@ -1,4 +1,6 @@
 extends KinematicBody2D
+class_name Player
+
 
 const Bullet = preload("res://Player/Bullet.tscn")
 const Missile = preload("res://Player/Missile.tscn")

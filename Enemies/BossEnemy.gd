@@ -7,9 +7,6 @@ const Bullet = preload("res://Enemies/EnemyBullet.tscn")
 export(int) var ACCELERATION = 70
 
 signal boss_died
-
-func _ready():
-	pass
 	
 func _process(delta):
 	chase_player(delta)
@@ -35,3 +32,7 @@ func fire_bullet():
 
 func _on_FireTimer_timeout():
 	fire_bullet()
+
+func _on_EnemyStats_enemy_death():
+	emit_signal("boss_died")
+	._on_EnemyStats_enemy_death()

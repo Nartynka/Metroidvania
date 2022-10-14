@@ -5,10 +5,10 @@
 [ext_resource path="res://World/MovingPlatform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/CrawlingEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/PlantEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Connections/02_and_free.tres" type="Resource" id=6]
 [ext_resource path="res://Enemies/FlyingEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Brick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Door.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Connections/01_and_free.tres" type="Resource" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -195,8 +195,8 @@ tile_data = PoolIntArray( 66, 0, 4, 67, 0, 196609, 68, 0, 196609, 69, 0, 196609,
 position = Vector2( 48, 736 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
-connection = ExtResource( 10 )
-new_level_path = "res://Levels/Level_01.tscn"
+connection = ExtResource( 6 )
+new_level_path = "res://Levels/Level_02.tscn"
 
 [node name="Bricks" type="Node2D" parent="." index="2"]
 position = Vector2( 16, 688 )
