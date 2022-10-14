@@ -1,5 +1,8 @@
 extends Powerup
 
 func _pick_up():
-	PlayerStats.missiles_unlocked = true
+	if PlayerStats.missiles_unlocked:
+		PlayerStats.missiles = PlayerStats.max_missiles
+	else:
+		PlayerStats.missiles_unlocked = true
 	queue_free()

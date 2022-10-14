@@ -81,8 +81,6 @@ func _physics_process(delta):
 		if PlayerStats.missiles > 0 and PlayerStats.missiles_unlocked:
 			fire_missile()
 			PlayerStats.missiles -= 1
-	if  Input.is_action_pressed("ui_down") and !PlayerStats.missiles_unlocked:
-		 PlayerStats.missiles_unlocked = true
 
 func fire_bullet():
 	var bullet = Utils.instance_on_main(Bullet, firePoint.global_position)
