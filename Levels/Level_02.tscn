@@ -82,7 +82,7 @@ position = Vector2( 144, 64 )
 rotation = -3.14159
 
 [node name="BossEnemy" parent="." index="4" instance=ExtResource( 4 )]
-position = Vector2( 216, 120 )
+position = Vector2( 144, 120 )
 
 [node name="Trigger" parent="." index="5" instance=ExtResource( 7 )]
 position = Vector2( 0, 144 )

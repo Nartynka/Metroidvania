@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/BossEnemyWing.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemies/BossEnemyLeg2.png" type="Texture" id=6]
 [ext_resource path="res://Enemies/BossEnemyLeg3.png" type="Texture" id=7]
 [ext_resource path="res://Enemies/BossEnemy.gd" type="Script" id=8]
+[ext_resource path="res://UI/BossBar.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fly"
@@ -863,6 +864,10 @@ collision_mask = 2
 [node name="FireTimer" type="Timer" parent="." index="8"]
 wait_time = 0.4
 autostart = true
+
+[node name="BossBar" parent="." index="9" instance=ExtResource( 9 )]
+visible = false
+MAX_HEALTH = 50
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
 

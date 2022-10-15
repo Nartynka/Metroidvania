@@ -5,11 +5,13 @@ onready var doorBlock = $EnterDoorBlock
 onready var doorBlock2 = $ExitDoorBlock
 
 func _ready():
+	boss.visible = false
 	boss.set_process(false)
 
 func _on_Trigger_area_triggered():
 	block_door(true)
 	boss.set_process(true)
+	boss.visible = true
 
 func _on_BossEnemy_boss_died():
 	block_door(false)

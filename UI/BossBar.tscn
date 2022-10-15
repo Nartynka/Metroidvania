@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/BossBar.gd" type="Script" id=2]
+[ext_resource path="res://UI/ButtonHoverStylebox.png" type="Texture" id=3]
+[ext_resource path="res://UI/ButtonStylebox.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[node name="BossBar" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ProgressBar" type="TextureProgress" parent="."]
+margin_left = 105.0
+margin_top = 10.0
+margin_right = 217.0
+margin_bottom = 14.0
+max_value = 50.0
+value = 25.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ProgressBar"]
+show_behind_parent = true
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 113.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ProgressBar1" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -56.0
+margin_top = 2.0
+margin_right = 56.0
+margin_bottom = 6.0
+theme = ExtResource( 1 )
+max_value = 50.0
+step = 1.0
+value = 25.0
+percent_visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ProgressBar1"]
+show_behind_parent = true
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 113.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -56.0
+margin_top = 2.0
+margin_right = 56.0
+margin_bottom = 6.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 50.0
+step = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="ProgressBar2"]
+show_behind_parent = true
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 113.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -16.5
+margin_top = 1.0
+margin_right = 16.5
+margin_bottom = 8.0
+theme = ExtResource( 1 )
+text = "BEE BOSS"

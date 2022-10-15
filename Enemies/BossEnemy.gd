@@ -2,13 +2,14 @@ extends "res://Enemies/Enemy.gd"
 
 onready var leftWallCheck = $LeftWallCheck
 onready var rightWallCheck = $RightWallCheck
-
+onready var bossBar = $BossBar
 const Bullet = preload("res://Enemies/EnemyBullet.tscn")
 export(int) var ACCELERATION = 70
 
 signal boss_died
-	
+
 func _process(delta):
+	bossBar.visible = visible
 	chase_player(delta)
 
 func chase_player(delta):
@@ -32,6 +33,10 @@ func fire_bullet():
 
 func _on_FireTimer_timeout():
 	fire_bullet()
+
+func _on_Hurtbox_hit(damage):
+	._on_Hurtbox_hit(damage)
+	bossBar.update(damage)
 
 func _on_EnemyStats_enemy_death():
 	emit_signal("boss_died")
