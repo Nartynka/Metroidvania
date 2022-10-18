@@ -82,6 +82,15 @@ func _physics_process(delta):
 			fire_missile()
 			PlayerStats.missiles -= 1
 
+func save() -> Dictionary:
+	var save_dict = {
+		"filename": get_filename(),
+		"parent": get_parent().get_path(),
+		"pos_x": position.x,
+		"pos_y": position.y
+	}
+	return save_dict
+
 func fire_bullet():
 	var bullet = Utils.instance_on_main(Bullet, firePoint.global_position)
 	bullet.velocity = Vector2.RIGHT.rotated(gun.rotation) * BULLET_SPEED
