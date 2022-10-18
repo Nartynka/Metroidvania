@@ -8,6 +8,10 @@ export(int) var ACCELERATION = 70
 
 signal boss_died
 
+func _ready():
+	if SaveAndLoad.custom_data.boss_defeated:
+		queue_free()
+
 func _process(delta):
 	bossBar.visible = visible
 	chase_player(delta)
@@ -40,4 +44,5 @@ func _on_Hurtbox_hit(damage):
 
 func _on_EnemyStats_enemy_death():
 	emit_signal("boss_died")
+	SaveAndLoad.custom_data.boss_defeated = true
 	._on_EnemyStats_enemy_death()

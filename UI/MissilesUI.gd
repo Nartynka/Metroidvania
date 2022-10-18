@@ -12,5 +12,5 @@ func _ready():
 func _on_missiles_change(amount):
 	label.text = str(amount)
 
-func _on_missiles_unlocked():
-	visible = true
+func _on_missiles_unlocked(visable):
+	visible = visable

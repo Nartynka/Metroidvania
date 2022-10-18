@@ -47,6 +47,7 @@ onready var cameraFollow = $CameraFollow
 
 func _ready():
 	PlayerStats.connect("player_death", self, "on_death")
+	PlayerStats.missiles_unlocked = SaveAndLoad.custom_data.missiles_unlocked
 	call_deferred("set_camera_follow")
 	
 
