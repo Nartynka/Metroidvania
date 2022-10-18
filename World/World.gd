@@ -5,6 +5,10 @@ onready var currentLevel = $Level_00
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 	Utils.get_player().connect("door_entered", self, "_on_door_entered")
+	
+	if SaveAndLoad.is_loading:
+		SaveAndLoad.load_game()
+		SaveAndLoad.is_loading = false
 
 func change_levels(door):
 	var offset = currentLevel.position

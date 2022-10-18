@@ -17,7 +17,8 @@ func _on_StartButton_pressed():
 
 
 func _on_LoadButton_pressed():
-	pass # Replace with function body.
+	SaveAndLoad.is_loading = true
+	get_tree().change_scene("res://World/World.tscn")
 
 
 func _on_QuitButton_pressed():

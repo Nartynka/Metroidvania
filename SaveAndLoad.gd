@@ -1,5 +1,6 @@
 extends Node
 
+var is_loading : bool = false
 
 func save_game():
 	var save_file = File.new()
