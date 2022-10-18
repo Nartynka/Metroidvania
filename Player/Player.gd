@@ -43,8 +43,12 @@ onready var gun = $Sprite/PlayerGun
 onready var firePoint = $Sprite/PlayerGun/Sprite/FirePoint
 onready var fireBulletTimer = $FireBulletTimer
 onready var pickupCheck = $PickupCheck
+onready var cameraFollow = $CameraFollow
+
 func _ready():
 	PlayerStats.connect("player_death", self, "on_death")
+	call_deferred("set_camera_follow")
+	
 
 func set_invincible(new_value):
 	invincible = new_value
@@ -81,6 +85,9 @@ func _physics_process(delta):
 		if PlayerStats.missiles > 0 and PlayerStats.missiles_unlocked:
 			fire_missile()
 			PlayerStats.missiles -= 1
+
+func set_camera_follow():
+	cameraFollow.remote_path = get_tree().get_nodes_in_group("Camera")[0].get_path()
 
 func save() -> Dictionary:
 	var save_dict = {

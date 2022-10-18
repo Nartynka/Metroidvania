@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Connections/00_and_01.tres" type="Resource" id=3]
 [ext_resource path="res://World/SaveStation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/WalkingEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/FlyingEnemy.tscn" type="PackedScene" id=7]
 
 [node name="Level_00" instance=ExtResource( 1 )]
 
@@ -67,5 +69,13 @@ rotation = -3.14159
 position = Vector2( 128, 64 )
 rotation = -3.14159
 
-[node name="SaveStation" parent="." index="3" instance=ExtResource( 4 )]
-position = Vector2( 80, 176 )
+[node name="WalkingEnemy" parent="." index="3" instance=ExtResource( 6 )]
+position = Vector2( 24, 176 )
+z_index = 1
+WALKING_DIRECTION = 1
+
+[node name="FlyingEnemy" parent="." index="4" instance=ExtResource( 7 )]
+position = Vector2( 56, 104 )
+
+[node name="SaveStation" parent="." index="5" instance=ExtResource( 4 )]
+position = Vector2( -24, 160 )

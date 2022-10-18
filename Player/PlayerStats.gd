@@ -27,3 +27,7 @@ func set_missiles(new_value):
 func set_missiles_unlocked(new_value):
 	missiles_unlocked = new_value
 	emit_signal("missiles_unlocked")
+
+func refill_stats():
+	self.health = max_health
+	self.missiles = max_missiles

@@ -183,7 +183,7 @@ anims/Run = SubResource( 4 )
 anims/Blink = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 
-[node name="FollowCamer" type="RemoteTransform2D" parent="."]
+[node name="CameraFollow" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -8 )
 update_rotation = false
 update_scale = false
