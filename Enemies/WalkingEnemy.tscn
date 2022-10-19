@@ -5,7 +5,7 @@
 [ext_resource path="res://Enemies/WalkingEnemy.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 6 )
+extents = Vector2( 2, 6 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 7.5 )
@@ -15,7 +15,7 @@ extents = Vector2( 6.5, 6 )
 
 [node name="WalkingEnemy" instance=ExtResource( 1 )]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 2
 script = ExtResource( 3 )
 WALKING_DIRECTION = -1
 
@@ -30,29 +30,27 @@ position = Vector2( 0, -6 )
 shape = SubResource( 1 )
 
 [node name="FloorLeft" type="RayCast2D" parent="." index="3"]
-position = Vector2( -3, 0 )
+position = Vector2( -2, -1 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 8 )
 collision_mask = 2
 
 [node name="FloorRight" type="RayCast2D" parent="." index="4"]
-position = Vector2( 3, 0 )
+position = Vector2( 2, -1 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 8 )
 collision_mask = 2
 
 [node name="WallLeft" type="RayCast2D" parent="." index="5"]
-position = Vector2( 0, -6 )
-rotation = 1.57079
+position = Vector2( 0, -8 )
 enabled = true
-cast_to = Vector2( 0, 13 )
+cast_to = Vector2( -6, 0 )
 collision_mask = 2
 
 [node name="WallRight" type="RayCast2D" parent="." index="6"]
-position = Vector2( 0, -6 )
-rotation = -1.57079
+position = Vector2( 0, -8 )
 enabled = true
-cast_to = Vector2( 0, 13 )
+cast_to = Vector2( 6, 0 )
 collision_mask = 2
 
 [node name="Hurtbox" parent="." index="7"]
