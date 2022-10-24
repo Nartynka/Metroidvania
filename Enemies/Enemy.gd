@@ -11,5 +11,6 @@ func _on_Hurtbox_hit(damage):
 	stats.health -= damage
 
 func _on_EnemyStats_enemy_death():
+	SoundFx.play("EnemyDie", -10)
 	Utils.instance_on_main(deathEffect, global_position)
 	queue_free()

@@ -7,3 +7,4 @@ func _on_SaveArea_body_entered(body):
 		animationPlayer.play("Save")
 		SaveAndLoad.save_game()
 		PlayerStats.refill_stats()
+		SoundFx.play("Powerup", 0, 0.6)

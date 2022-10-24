@@ -10,11 +10,16 @@ func _ready():
 
 func _on_Trigger_area_triggered():
 	if is_instance_valid(boss):
+		SoundFx.play("Step", 10)
+		SoundFx.play("Step", 10)
 		block_door(true)
 		boss.set_process(true)
 		boss.visible = true
 
 func _on_BossEnemy_boss_died():
+	SoundFx.play("Step", 10)
+	SoundFx.play("Step", 10)
+	SoundFx.play("Powerup", 10, 0.3)
 	block_door(false)
 
 func block_door(value):

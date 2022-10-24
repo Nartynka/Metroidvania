@@ -115,10 +115,10 @@ func fire_missile():
 	fireBulletTimer.start()
 
 func create_dust_effect():
+	SoundFx.play("Step", -20, 0.2)
 	var dust_position = global_position
 	dust_position.x += rand_range(-4, 4)
-	var dustEffect = Utils.instance_on_main(DustEffect, dust_position)
-#	dustEffect.queue_free()
+	Utils.instance_on_main(DustEffect, dust_position)
 	
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -157,13 +157,15 @@ func jump_check():
 #			print("double jumped in move state")
 
 func jump():
+	SoundFx.play("Jump", -10)
 	Utils.instance_on_main(JumpEffect, global_position)
 	motion.y = -JUMP_FORCE
 	snap_vector = Vector2.ZERO
 
 func apply_gravity(delta):
 	if not is_on_floor():
-		motion.y += GRAVITY * delta
+		motion.y += GRAVITY * delta 
+		motion.y = min(motion.y, JUMP_FORCE)
 		motion.y = min(motion.y, JUMP_FORCE)
 
 func update_animation(input_vector):
@@ -261,6 +263,7 @@ func wall_deatch_check(delta, wall_direction):
 
 func _on_Hurtbox_hit(damage):
 	if not invincible:
+		SoundFx.play("Hurt")
 		PlayerStats.health -= damage
 		blinkAnimation.play("Blink")
 		if PlayerStats.health > 0:
