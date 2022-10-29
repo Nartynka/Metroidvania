@@ -13,7 +13,7 @@ func set_pause(new_value):
 		SoundFx.play("Unpause", -10)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and Utils.get_player():
 		self.paused = !paused
 
 func _on_QuitButton_pressed():

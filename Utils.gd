@@ -14,7 +14,7 @@ func get_player():
 	if player:
 		return player[player.size()-1]
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if Input.get_connected_joypads():

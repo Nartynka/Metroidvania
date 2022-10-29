@@ -5,12 +5,14 @@ onready var currentLevel = $Level_00
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 	Music.play_queue()
-
+	
 	if SaveAndLoad.is_loading:
 		SaveAndLoad.load_game()
 		SaveAndLoad.is_loading = false
-	
-	Utils.get_player().connect("door_entered", self, "_on_door_entered")
+
+	var player = Utils.get_player()
+	player.connect("door_entered", self, "_on_door_entered")
+	player.connect("player_death", self, "_on_Player_player_death")
 
 func change_levels(door):
 	var offset = currentLevel.position
@@ -31,3 +33,8 @@ func get_door(ignore_door, connection):
 
 func _on_door_entered(door):
 	call_deferred("change_levels", door)
+
+
+func _on_Player_player_death():
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().change_scene("res://Menus/GameOverMenu.tscn")

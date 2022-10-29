@@ -32,6 +32,7 @@ var double_jump = false
 
 var PlayerStats = ResourceLoader.PlayerStats
 
+signal player_death
 signal door_entered(door)
 
 onready var sprite = $Sprite
@@ -272,6 +273,7 @@ func _on_Hurtbox_hit(damage):
 			Input.start_joy_vibration(0, 1, 1, 0.7)
 
 func on_death():
+	emit_signal("player_death")
 	queue_free()
 
 
