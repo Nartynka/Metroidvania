@@ -4,29 +4,29 @@ Black and white "1 bit" metroidvania game made with Godot Engine.
 
 ## Player
 
-![Player]()
+![Player](./readme%20file/Player.gif)
 
 ## Boss
 
-![Boss]()
+![Boss](./readme%20file/Boss.gif)
 
 ## Enemy types
 
 #### Walking
 
-![Walking Enemy]()
+![Walking Enemy](./readme%20file/Walking.gif)
 
 #### Crawling 
 
-![Crawling Enemy]()
+![Crawling Enemy](./readme%20file/Crawling.gif)
 
 #### Flying (ghost bird)
 
-![Flying Enemy]()
+![Flying Enemy](./readme%20file/Flying.gif)
 
 #### Plant
 
-![Plant Enemy]()
+![Plant Enemy](./readme%20file/Plant.gif)
 
 ## Controls (mouse and keyboar)
 - `WASD` or `Arrow keys` to move
