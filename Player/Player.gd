@@ -38,7 +38,7 @@ signal door_entered(door)
 onready var sprite = $Sprite
 onready var spriteAnimation = $SpriteAnimation
 onready var blinkAnimation = $BlinkAnimation
-onready var coyotoJumpTimer = $CoyoteJumpTimer
+onready var coyoteJumpTimer = $CoyoteJumpTimer
 onready var wallGrabTimer = $WallGrabTimer
 onready var gun = $Sprite/PlayerGun
 onready var firePoint = $Sprite/PlayerGun/Sprite/FirePoint
@@ -140,7 +140,7 @@ func update_snap_vector():
 		snap_vector = Vector2.DOWN
 
 func jump_check():
-	if is_on_floor() or coyotoJumpTimer.time_left > 0 or previous_state == 1:
+	if is_on_floor() or coyoteJumpTimer.time_left > 0 or previous_state == 1:
 		if Input.is_action_just_pressed("jump"):
 			$Node/Label.text = "Normal Jump"
 			jump()
