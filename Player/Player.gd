@@ -222,11 +222,11 @@ func move():
 func wall_check():
 	if !is_on_floor() and is_on_wall() and wallGrabTimer.time_left == 0:
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-				var timer = get_tree().create_timer(0.05)
+				var timer = get_tree().create_timer(0.1)
 				timer.connect("timeout", self, "wall_grab")
 
 func wall_grab():
-	if is_on_wall() and not is_on_floor():
+	if is_on_wall() and not is_on_floor() and wallGrabTimer.time_left == 0:
 		state = WALL_SLIDE
 		double_jump = true
 		create_dust_effect()

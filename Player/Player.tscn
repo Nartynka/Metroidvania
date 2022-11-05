@@ -197,7 +197,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="WallGrabTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.4
 one_shot = true
 
 [node name="Node" type="Node2D" parent="."]
